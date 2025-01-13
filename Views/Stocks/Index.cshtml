@@ -1,0 +1,45 @@
+﻿@model IEnumerable<POS.Models.Stock>
+
+@{
+    ViewData["Title"] = "Stock";
+}
+
+<h1>Stock</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoBarra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>   
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.CodigoBarra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Nombre)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.Cantidad)
+                </td>
+                <td>
+                    <a class="btn btn-secondary" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.StockId">Editar</a> |      
+                    <a class="btn btn-info" style="text-decoration:none" asp-action="Details" asp-route-id="@item.StockId">Detalles</a>
+                </td>
+                    
+                
+                
+            </tr>
+}
+    </tbody>
+</table>

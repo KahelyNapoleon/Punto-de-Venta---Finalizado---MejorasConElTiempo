@@ -1,0 +1,40 @@
+﻿@model IEnumerable<POS.Models.Categoria>
+
+@{
+    ViewData["Title"] = "Categorias";
+}
+
+<h1 class="text-lg-center">Categorias</h1>
+
+@* <p>
+    <button type="button" class="btn btn-primary" asp-action="Create">Crear Categoria</button>
+</p> *@
+<p>
+    <a class="btn btn-primary" asp-action="Create">Crear Categoria</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descripcion)
+            </td>
+            <td class="text-lg-end">
+                <a class="btn btn-secondary" asp-action="Edit" asp-route-id="@item.CategoriaId">Editar</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.CategoriaId">Eliminar</a>
+            </td>
+        </tr>
+      
+}
+<br/>
+      
+    </tbody>
+</table>

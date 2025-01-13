@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ListaProductoViewModel>
+
+@{
+    ViewBag.Title = "Vender";
+    bool stockInsuficiente = TempData["StockInsuficiente"] != null ? (bool)TempData["StockInsuficiente"] : false;
+}
+
+<h2>Vender</h2>
+
+<form asp-action="AgregarProducto" method="post">
+    <div class="form-group">
+        <strong><label for="codigoBarra">Código de Barras:</label></strong>
+        <input type="text" class="form-control" id="codigoBarra" name="codigoBarra" placeholder="Escanear código de barras" autofocus />
+    </div>
+    <br />
+    <button type="submit" class="btn btn-primary">Agregar Producto</button>
+</form>
+
+<hr />
+
+@* Implementacion de Vista Parcial *@
+
+<div id="listaproductos">
+    @* @Html.RenderPartialAsync("_listaProductos", Model) *@
+    @{
+        Html.RenderPartialAsync("_listaProductos", Model);
+    }
+    @*  @await Html.PartialAsync("_listaProductos", Model) *@
+</div>
+
+@* Modal *@
+<div class="modal fade" id="stockModal" tabindex="-1" role="dialog" aria-labelledby="stockModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="stockModalLabel">Stock Insuficiente</h5>
+                
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            </div>
+            <div class="modal-body">
+                Lo siento, no hay suficiente stock para este producto.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('form[asp-action="FinalizarCompra"]').on('submit', function (e) {
+            e.preventDefault(); // Prevenir el envío tradicional del formulario
+
+            $.ajax({
+                url: '@Url.Action("FinalizarCompra")', // URL del método de acción
+                type: 'POST', //Tipo de accion
+                data: $(this).serialize(), // Serializar los datos del formulario
+                success: function (result) {
+                    // Actualizar solo la sección de la lista de productos
+                    $('#listaproductos').html(result);
+                },
+                error: function () {
+                    alert("Ocurrió un error al finalizar la compra.");
+                }
+            });
+        });
+    });
+
+ 
+</script>
+
+@if (stockInsuficiente)
+{
+    <script>
+        $(document).ready(function () {
+            $('#stockModal').modal('show');
+        });
+    </script>
+}
+
+
+

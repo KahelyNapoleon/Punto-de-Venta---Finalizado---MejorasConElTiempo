@@ -1,0 +1,75 @@
+﻿@model POS.Models.ControlPrecio
+
+@{
+    ViewData["Title"] = "Editar Precio";
+}
+
+
+<h1> Producto: @Html.DisplayFor(model => model.Producto.Nombre) @Html.DisplayFor(model => model.Producto.PesoNeto)
+    @FuncionesProductosViews.DevolverPesoSegunCategoria(Model.Producto.Categoria.Descripcion)
+</h1>
+
+<h4>Editar Precio</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ControlPrecioId" />
+            <div class="form-group">
+              @*   <label asp-for="ProductoId" class="control-label"></label> *@
+                <input type="hidden" asp-for="ProductoId" class="form-control" />
+                <span asp-validation-for="ProductoId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Costo" class="control-label"></label>
+                <input asp-for="Costo" asp-format="{0:F2}" class="form-control" step="0.01"  />
+                <span asp-validation-for="Costo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PorcentajeGanancia" class="control-label"></label>
+                <input asp-for="PorcentajeGanancia" asp-format="{0:F2}" class="form-control" step="0.01" />
+                <span asp-validation-for="PorcentajeGanancia" class="text-danger"></span>
+            </div>
+            @* <div class="form-group">
+                <label asp-for="PrecioVenta" class="control-label"></label>
+                <input asp-for="PrecioVenta" class="form-control" />
+                <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+            </div> *@
+            @* <div class="form-group">
+                <label asp-for="CodigoBarra" class="control-label"></label>
+                <input asp-for="CodigoBarra" class="form-control" />
+                <span asp-validation-for="CodigoBarra" class="text-danger"></span>
+            </div> *@
+            <br/>
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<br/>
+
+<div>
+    <a class="btn btn-outline-primary" asp-action="Index">Volver Atras</a>
+</div>
+
+@* @section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} *@
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/localization/messages_es.js"></script>
+
+    <script>
+        // Cambia el validador de número para aceptar decimales con coma
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?\d+(\,\d{1,2})?$/.test(value);
+        };
+    </script>
+}
+

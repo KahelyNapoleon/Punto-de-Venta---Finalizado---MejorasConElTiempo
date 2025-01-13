@@ -1,0 +1,66 @@
+﻿@model IEnumerable<POS.Models.ControlPrecio>
+
+@{
+    ViewData["Title"] = "Control de Precios";
+}
+
+<h1>Control de Precios</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoBarra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto.PesoNeto)
+                
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Costo)
+            </th>
+            <th style ="text-align: center">
+                @Html.DisplayNameFor(model => model.PorcentajeGanancia)
+            </th>
+            <th style="text-align: center">
+                @Html.DisplayNameFor(model => model.PrecioVenta)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.CodigoBarra)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Producto.Nombre)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(modelItem => item.Producto.PesoNeto)
+                @FuncionesProductosViews.DevolverPesoSegunCategoria(item.Producto.Categoria.Descripcion) 
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Costo)
+            </td>
+            <td style="text-align: center">
+                @Html.DisplayFor(modelItem => item.PorcentajeGanancia)
+            </td>
+                <td style="text-align: center">
+                @Html.DisplayFor(modelItem => item.PrecioVenta)
+            </td>
+           
+            <td>
+                <a class="btn btn-success"  style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ControlPrecioId">Editar</a> |
+                <a class="btn btn-info" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ControlPrecioId">Detalles</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

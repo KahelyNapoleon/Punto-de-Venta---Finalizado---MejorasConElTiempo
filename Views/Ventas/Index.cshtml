@@ -1,0 +1,39 @@
+﻿@model IEnumerable<POS.Models.Venta>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Registro de Ventas</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Total)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaVenta)
+            </td>
+            <td style="">
+                    <b>@Html.DisplayFor(modelItem => item.Total)</b>
+            </td>
+            <td>
+               
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.VentaId">Detalles</a> |
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.VentaId">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

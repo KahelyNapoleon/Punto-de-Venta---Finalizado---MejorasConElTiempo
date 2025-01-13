@@ -1,0 +1,100 @@
+﻿Acciones del dia :
+1)Se implemento Generar los detalles de venta a partir de la lista de productos que se genera en Session.
+
+2)Se genero un codigo en la accion FinalizarVenta() del controlador de VentasController, donde de a traves
+de un bucle foreach se accede a cada registro de la venta para restar la cantidad de productos vendidos al Stock del
+producto en cuestion. Codigo a continuacion:
+Codigo)Restar la cantidad Vendida de cada producto a la cantidad total del producto 
+                foreach (var item in ListaProductos)
+                {
+
+                ALERTA: VERIFICAR SI ES NECESARIO INCLUIR PRODUCTO EN LA CONSULTA
+
+                    var actualizarStock = await _context.Stocks
+                        .Include(s => s.Producto)
+                        .FirstOrDefaultAsync(s => s.CodigoBarra == item.CodigoBarra);
+
+                    if (actualizarStock != null)
+                    {
+                        actualizarStock.Cantidad -= item.Cantidad;
+
+                        _context.Update(actualizarStock);
+                        await _context.SaveChangesAsync();
+                    }
+                    
+                }
+2.A)El codigo no funciono ya que al interceptar el producto de stock por su codigo de barra, se vio que 
+ningun producto de stock tenia codigo de barra (el campo CodigoBarra se agrego posteriormente a crear productos).
+
+3) Otra exception que se encotnro fue que a la hora de eliminar un producto junto con las tablas relacionadas
+(Stock y ControlPrecio) al producto, se nego, por el programa, eliminarlo por estar relacionada con la tabla
+DetalleVenta.
+3.A) Se Elimino la relacion de DetalleVenta con Producto, es decir, la llave foranea que los ataba.
+3.B) Se Soluciono con exito y se permiten eliminar los productos y sus relaciones.
+
+4)FALTA ELIMINAR TODOS LOS PRODUCTOS PARA QUE LAS TABLAS RELACIONADAS SE GENEREN CON CODIGO DE BARRA.
+
+
+FECHA 16/11 : REGISTRO PARA REPARAR EL CODIGO
+1) LA TABLA DE OBJETO VENTA.DB RETORNA UNA EXEPCION EN EL PROYECTO A LA HORA DE ELIMINAR UN REGISTRO DE VENTA,
+ESTO OCURRE POR LA RELACION CON LA TABLA DETALLESVENTA, 
+LA TABLA DETALLES VENTA TIENE REGISTRADO VARIOS PRODUCTOS CON VENTAID RELACIONADOS A LA TABLA, POR ENDE SE DEBEN ELIMINAR LA FOREIGN KEY,
+ O ELIMINAR ESTOS REGISTROS PARA QUE NO HAYA INCONSISTENCIAS A LA HORA DE ELIMINAR LOS REGISTRO DE LAS VENTAS.
+
+FECHA 18/11 : Cronograma del Dia
+IMPLEMENTACIONES:
+1)MOSTRAR EN LOS DETALLES DE UN REGISTRO DE VENTA LOS PRODUCTOS QUE SE VENDIERON(CODIGOBARRA, NOMBRE,CANTIDAD,PRECIOUNITARIO, SUBTOTAL)
+1.A)SE COMBINO, EN LA VISTA DE DETAILS PERTENECIENTE A VENTA, UNA REFERENCIA DE VISTA PARCIAL, QUE IMPLEMENTA MOSTRAR TODOS LOS PRODUCTOS
+AL REGISTRO DEL DETALLE DE LA VENTA EN CUESTION
+1.B)EN EL LADO DEL CONTROLADOR PARA PODER VISUALIZAR LOS DETALLES DE LA VENTA, SE AGREGO EN LA CONSULTA LINQ QUE OBTIENE DATOS DE LA VENTA 
+DEL CUAL SE BUSCA POR SU ID, LA RELACION QUE TIENE LA VENTA CON DETALLEVETNA... INCLUDE(V=>V.DETALLEVENTA) Y THENINCLUDE(P=>P.PRODUCTO.CATEGORIA) 
+CODIGO)
+// GET: Ventas/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var venta = await _context.Venta
+            .Include(v=>v.DetalleVenta)          || PARA QUE LA VISTA INCLUYE LOS REGISTROS DE DETALLEVENTA
+            .ThenInclude(d=>d.Producto.Categoria)||AQUI PARA PODER MOSTRAR EL NOMBRE PERTENECIENTE AL ID
+            .FirstOrDefaultAsync(m => m.VentaId == id); || DEL DETALLE DE VENTA
+
+            if (venta == null)
+            {
+                return NotFound();
+            }
+
+            return View(venta);
+        }
+
+IMPLEMENTACIONES PARA AGREGAR:
+1)PODER ELIMINAR UN REGISTRO DE PRODUCTO DE LA LISTA GENERADA POR SESSION(UTILIZADA
+PARA GENERAR UNA VENTA)
+2)PODER EDITAR LA CANTIDAD EN CASO QUE EL COMPRADOR DECIDA QUITAR PRODUCTOS O AGREGAR MUCHA CANTIDAD DEL MISMO PRODUCTO Y NO ESCANEAR, POR EJEMPLO 50 VECES EL PRODUCTO POR EL CODIGO DE BARRAS.
+
+
+
+FECHA 20/11/2024
+Implementaciones:
+1)Editar de cantidad:
+Metodo de accion en VentasController.cs
+Vistas realizadas en _listaProductos.cshtml
+
+
+FECHA 3/1/2025
+Especificaciones del dia:
+1-Estudio y repaso de los metodos de accion del controlador de Ventas.
+2-Se evaluo:
+  -Verificar el stock disponible comparando los productos de Lista de Venta que se ingresan a medida que se ESCANEAN.
+  -Verificar el stock disponible en caso de querer EDITAR la cantidad.
+  -Validar y restar el stock de los productos relacionados de la venta una vez se quiere finalizar la compra.
+
+FECHA 5/1/2025
+Cambios en Lineas 86 y 239, mejora en el codigo de validacion de cantidad de stock antes de agregar
+el producto o Editarlo.
+
+FECHA 7/1/2025
+Al agregar o editar la cantidad de stock en la seccin de Stock el codigo de barra es modificado a NULL en la base de datos.

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<POS.Models.Producto>
+
+
+
+<h2>Lista Productos</h2>
+
+<p>
+    <a class="btn btn-outline-primary" style="text-decoration:none" asp-action="Create">Ingresar Nuevo Producto</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CodigoBarra)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.PesoNeto)
+            </th>
+            <th style="text-align:center">
+                @Html.DisplayNameFor(model => model.Categoria)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CodigoBarra)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td style="text-align: center">
+                    @Html.DisplayFor(modelItem => item.PesoNeto)
+                    @FuncionesProductosViews.DevolverPesoSegunCategoria(item.Categoria.Descripcion)
+                </td>
+                <td style="text-align:center">
+                    @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
+                </td>
+                <td>
+                    <a class="btn btn-info" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ProductoId">Editar</a> |
+                    <a class="btn btn-success" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ProductoId">Detalles</a> |
+                    <a class="btn btn-danger" style="text-decoration:none" asp-action="Delete" asp-route-id="@item.ProductoId">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,85 @@
+﻿@model POS.Models.ProductoViewModel
+
+@{
+    ViewData["Title"] = "Crear Producto";
+}
+
+<h2>Crear Producto</h2>
+
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label asp-for="CodigoBarra" class="control-label"></label>
+        <input asp-for="CodigoBarra" class="form-control" />
+        <span asp-validation-for="CodigoBarra" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Nombre" class="control-label"></label>
+        <input asp-for="Nombre" class="form-control" />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PesoNeto" class="control-label"></label>
+        <input asp-for="PesoNeto" class="form-control" />
+        <span asp-validation-for="PesoNeto" class="text-danger"></span>
+    </div>
+
+     <div class="form-group">
+        <label asp-for="CategoriaId" class="control-label"></label>
+        <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select> 
+        <span asp-validation-for="CategoriaId" class="text-danger"></span>
+    </div>
+
+    <a asp-controller="Categorias" asp-action="Create" class="btn btn-primary">Crear Categoria</a>
+
+    <hr />
+    <h4>Datos para Control de Precio</h4>
+
+    <div class="form-group">
+        <label asp-for="Costo" class="control-label"></label>
+        <input asp-for="Costo" class="form-control" />
+        <span asp-validation-for="Costo" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="PorcentajeGanancia" class="control-label"></label>
+        <input asp-for="PorcentajeGanancia" class="form-control" />
+        <span asp-validation-for="PorcentajeGanancia" class="text-danger"></span>
+    </div>
+
+    <hr />
+    <h4>Datos de Stock</h4>
+
+    <div class="form-group">
+        <label asp-for="Cantidad" class="control-label"></label>
+        <input asp-for="Cantidad" class="form-control" />
+        <span asp-validation-for="Cantidad" class="text-danger"></span>
+    </div>
+
+    <br/>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
+
+@* @section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+} *@
+
+
+@section Scripts {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/localization/messages_es.js"></script>
+
+    <script>
+        // Cambia el validador de número para aceptar decimales con coma
+        $.validator.methods.number = function (value, element) {
+            return this.optional(element) || /^-?\d+(\,\d{1,2})?$/.test(value);
+        };
+    </script>
+}

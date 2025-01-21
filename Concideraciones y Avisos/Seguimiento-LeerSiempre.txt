@@ -98,3 +98,18 @@ el producto o Editarlo.
 
 FECHA 7/1/2025
 Al agregar o editar la cantidad de stock en la seccin de Stock el codigo de barra es modificado a NULL en la base de datos.
+
+FECHA 20/01/2025
+Objetivos:
+-Implementar Asp.Net Core Identity
+https://learn.microsoft.com/es-es/aspnet/core/security/authentication/identity-configuration?view=aspnetcore-9.0
+
+
+
+
+
+
+
+
+
+

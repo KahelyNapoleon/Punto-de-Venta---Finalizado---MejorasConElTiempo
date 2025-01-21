@@ -41,13 +41,6 @@ namespace POS
             CultureInfo.DefaultThreadCurrentUICulture = cultureInfo;
 
 
-            //Se agrego Session
-            //builder.Services.AddSession(options =>
-            //{
-            //    options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de expiración de la sesión
-            //    options.Cookie.HttpOnly = true; // Asegura que las cookies solo sean accesibles desde el lado del servidor
-            //    options.Cookie.IsEssential = true; // Asegura que la cookie esté siempre disponible
-            //});
 
             //Agrega Session a la app
             app.UseSession();

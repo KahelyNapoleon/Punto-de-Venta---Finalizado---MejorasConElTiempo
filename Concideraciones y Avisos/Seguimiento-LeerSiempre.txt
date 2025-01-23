@@ -103,9 +103,10 @@ FECHA 20/01/2025
 Objetivos:
 -Implementar Asp.Net Core Identity
 https://learn.microsoft.com/es-es/aspnet/core/security/authentication/identity-configuration?view=aspnetcore-9.0
-
-
-
+En el apartado de "Scaffolding de Identity en un proyecto de MVC sin autorización existente"
+https://learn.microsoft.com/es-es/aspnet/core/security/authentication/scaffold-identity?view=aspnetcore-9.0&tabs=net-cli
+elejir CLI de .NET y tner como referencia el siguiente video
+https://www.youtube.com/watch?v=MZAJ4noYTjs&t=312s
 
 
 

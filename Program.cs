@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using POS.Data;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
+
 
 namespace POS
 {
@@ -16,11 +18,12 @@ namespace POS
                 (options => options.UseSqlServer
                 (builder.Configuration.GetConnectionString("Pos")));
 
+            
             builder.Services.AddSession(options =>
             {
-                options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de expiración de la sesión
+                options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de expiraciï¿½n de la sesiï¿½n
                 options.Cookie.HttpOnly = true; // Asegura que las cookies solo sean accesibles desde el lado del servidor
-                options.Cookie.IsEssential = true; // Asegura que la cookie esté siempre disponible
+                options.Cookie.IsEssential = true; // Asegura que la cookie estï¿½ siempre disponible
             });
 
 

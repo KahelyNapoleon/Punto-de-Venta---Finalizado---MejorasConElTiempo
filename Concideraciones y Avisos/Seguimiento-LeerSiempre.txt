@@ -98,3 +98,7 @@ el producto o Editarlo.
 
 FECHA 7/1/2025
 Al agregar o editar la cantidad de stock en la seccin de Stock el codigo de barra es modificado a NULL en la base de datos.
+
+
+FECHA 22/1/2025
+Integrar Identity al proyecto.

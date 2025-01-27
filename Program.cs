@@ -14,7 +14,7 @@ namespace POS
             builder.Services.AddControllersWithViews();
             builder.Services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer
-                (builder.Configuration.GetConnectionString("Pos")));
+                (builder.Configuration.GetConnectionString("DataBasePOS")));
 
             builder.Services.AddSession(options =>
             {

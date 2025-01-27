@@ -31,16 +31,18 @@
                 <input asp-for="PorcentajeGanancia" asp-format="{0:F2}" class="form-control" step="0.01" />
                 <span asp-validation-for="PorcentajeGanancia" class="text-danger"></span>
             </div>
-            @* <div class="form-group">
-                <label asp-for="PrecioVenta" class="control-label"></label>
-                <input asp-for="PrecioVenta" class="form-control" />
+             <div class="form-group">
+               @*  <label asp-for="PrecioVenta" class="control-label"></label> *@
+                <input type="hidden" asp-for="PrecioVenta" class="form-control" />
                 <span asp-validation-for="PrecioVenta" class="text-danger"></span>
-            </div> *@
-            @* <div class="form-group">
-                <label asp-for="CodigoBarra" class="control-label"></label>
-                <input asp-for="CodigoBarra" class="form-control" />
+            </div> 
+            
+            <div class="form-group">
+                @*  <label asp-for="CodigoBarra" class="control-label"></label>  *@
+                <input type="hidden" asp-for="CodigoBarra" class="form-control" />
                 <span asp-validation-for="CodigoBarra" class="text-danger"></span>
-            </div> *@
+            </div>
+
             <br/>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />

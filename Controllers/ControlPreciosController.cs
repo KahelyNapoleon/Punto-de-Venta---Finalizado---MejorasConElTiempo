@@ -97,7 +97,7 @@ namespace POS.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ControlPrecioId,ProductoId,Costo,PorcentajeGanancia")] ControlPrecio controlPrecio)
+        public async Task<IActionResult> Edit(int id, [Bind("ControlPrecioId,ProductoId,Costo,PorcentajeGanancia,CodigoBarra")] ControlPrecio controlPrecio)
         {
             if (id != controlPrecio.ControlPrecioId)
             {

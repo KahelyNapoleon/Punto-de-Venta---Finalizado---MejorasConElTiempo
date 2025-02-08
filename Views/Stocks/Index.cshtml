@@ -6,7 +6,8 @@
 
 <h1>Stock</h1>
 
-<table class="table">
+<div class="table-responsive-xl">
+<table class="table table-striped border border-success">
     <thead>
         <tr>
             <th>
@@ -18,6 +19,7 @@
             <th style="text-align: center">
                 @Html.DisplayNameFor(model => model.Cantidad)
             </th>   
+            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -32,14 +34,13 @@
                 <td style="text-align: center">
                     @Html.DisplayFor(modelItem => item.Cantidad)
                 </td>
-                <td>
-                    <a class="btn btn-secondary" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.StockId">Editar</a> |      
+                <td class="col">
+                    <a class="btn btn-secondary" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.StockId">Editar</a>
                     <a class="btn btn-info" style="text-decoration:none" asp-action="Details" asp-route-id="@item.StockId">Detalles</a>
                 </td>
-                    
-                
-                
+                   
             </tr>
 }
     </tbody>
 </table>
+</div>

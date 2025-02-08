@@ -7,7 +7,7 @@
 <h1>Control de Precios</h1>
 
 
-<table class="table">
+<table class="table table-striped border border-success">
     <thead>
         <tr>
             <th>
@@ -57,8 +57,8 @@
             </td>
            
             <td>
-                <a class="btn btn-success"  style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ControlPrecioId">Editar</a> |
-                <a class="btn btn-info" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ControlPrecioId">Detalles</a>
+                <a class="btn btn-success mb-2"  style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ControlPrecioId">Editar</a>
+                <a class="btn btn-info mb-2" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ControlPrecioId">Detalles</a>
             </td>
         </tr>
 }

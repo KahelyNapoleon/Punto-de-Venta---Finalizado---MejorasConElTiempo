@@ -7,8 +7,8 @@
 <p>
     <a class="btn btn-outline-primary" style="text-decoration:none" asp-action="Create">Ingresar Nuevo Producto</a>
 </p>
-<table class="table">
-    <thead>
+<table class="table table-striped border border-succes">
+    <thead class="table-dark">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.CodigoBarra)
@@ -26,9 +26,15 @@
         </tr>
     </thead>
     <tbody>
+        @{
+            int index = 0;
+        }
         @foreach (var item in Model)
         {
-            <tr>
+            @* var par = index % 2 == 0;
+            var impar = !par; *@
+            @* <tr class="@(par ? "table-primary" : "table-secondary")"> *@
+                <tr>
                 <td>
                     @Html.DisplayFor(modelItem => item.CodigoBarra)
                 </td>
@@ -43,11 +49,13 @@
                     @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
                 </td>
                 <td>
-                    <a class="btn btn-info" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ProductoId">Editar</a> |
-                    <a class="btn btn-success" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ProductoId">Detalles</a> |
-                    <a class="btn btn-danger" style="text-decoration:none" asp-action="Delete" asp-route-id="@item.ProductoId">Eliminar</a>
+                    <a class="btn btn-info mb-2" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ProductoId">Editar</a> 
+                    <a class="btn btn-success mb-2" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ProductoId">Detalles</a> 
+                    <a class="btn btn-danger mb-2" style="text-decoration:none" asp-action="Delete" asp-route-id="@item.ProductoId">Eliminar</a>
                 </td>
             </tr>
+
+            index++;
         }
     </tbody>
 </table>

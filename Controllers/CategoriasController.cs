@@ -143,11 +143,20 @@ namespace POS.Controllers
                 return NotFound();
             }
 
-            var categoria = await _context.Categoria
+            var categoria = await _context.Categoria.
+                Include(c => c.Productos)
                 .FirstOrDefaultAsync(m => m.CategoriaId == id);
             if (categoria == null)
             {
                 return NotFound();
+            }
+            if (categoria.Productos != null && categoria.Productos.Any())
+            {
+                throw new InvalidOperationException("No se peude eliminar esta categoria porque esta vinculada a un producto");
+            }
+            else
+            {
+                return View(categoria);
             }
 
             return View(categoria);

@@ -102,3 +102,9 @@ Al agregar o editar la cantidad de stock en la seccin de Stock el codigo de barr
 
 FECHA 22/1/2025
 Integrar Identity al proyecto.
+PENDIENTE
+
+FECHA 7/2/2025
+Corregir en caso de que una categoria quiera ser eliminada que noexista ningun producto ligado a ella.
+
+

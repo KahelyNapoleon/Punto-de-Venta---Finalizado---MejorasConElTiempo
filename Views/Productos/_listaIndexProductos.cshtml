@@ -2,12 +2,12 @@
 
 
 
-<h2>Lista Productos</h2>
+<h2>Listado de Productos</h2>
 
 <p>
     <a class="btn btn-outline-primary" style="text-decoration:none" asp-action="Create">Ingresar Nuevo Producto</a>
 </p>
-<table class="table table-striped border border-succes">
+<table class="table table-striped table-bordered border-primary">
     <thead class="table-dark">
         <tr>
             <th>
@@ -48,7 +48,7 @@
                 <td style="text-align:center">
                     @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
                 </td>
-                <td>
+                <td class=" text-lg-end">
                     <a class="btn btn-info mb-2" style="text-decoration:none" asp-action="Edit" asp-route-id="@item.ProductoId">Editar</a> 
                     <a class="btn btn-success mb-2" style="text-decoration:none" asp-action="Details" asp-route-id="@item.ProductoId">Detalles</a> 
                     <a class="btn btn-danger mb-2" style="text-decoration:none" asp-action="Delete" asp-route-id="@item.ProductoId">Eliminar</a>

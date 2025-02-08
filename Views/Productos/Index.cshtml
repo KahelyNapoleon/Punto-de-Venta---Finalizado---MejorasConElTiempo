@@ -7,17 +7,17 @@
 <h1>Buscar Producto:</h1>
 
 <form asp-action="Index" method="get">
-    <div class="form-group w-50">
+    <div class="form-group w-25">
         <strong><label for="searchCategory">Categoría</label></strong>
         <input type="text" class="form-control" id="BuscarCategoria" name="BuscarCategoria" value="@Context.Request.Query["BuscarCategoria"]" placeholder="Nombre de la Categoría" />
     </div>
 
-    <div class="form-group w-50">
+    <div class="form-group w-25">
         <strong><label for="searchBarcode">Código de Barras</label></strong>
         <input type="text" class="form-control" id="BuscarCodigoBarra" name="BuscarCodigoBarra" value="@Context.Request.Query["BuscarCodigoBarra"]" placeholder="Código de Barras" />
     </div>
 
-    <div class="form-group w-50">
+    <div class="form-group w-25">
         <strong><label for="searchName">Nombre del Producto</label></strong>
         <input type="text" class="form-control" id="BuscarNombre" name="BuscarNombre" value="@Context.Request.Query["BuscarNombre"]" placeholder="Nombre del Producto" />
     </div>

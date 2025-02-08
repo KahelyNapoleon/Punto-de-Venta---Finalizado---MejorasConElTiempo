@@ -1,33 +1,33 @@
 ﻿@model IEnumerable<DetalleVenta>
 
 
-    <h3>Lista de Productos Vendidos</h3>
+<h3>Detalle:</h3>
 
-    <table class="table table-bordered table-striped">
-        <thead>
-            <tr>
-                <th>Código de Barra</th>
-                <th>Nombre</th>
-                <th>Peso Neto</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-                <th>Total</th>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr class="text-lg-center">
+            <th>Código de Barra</th>
+            <th>Nombre</th>
+            <th>Peso Neto</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detalle in Model)
+        {
+            <tr class="text-lg-center">
+                <td>@detalle.CodigoBarra</td>
+                <td>@detalle.Producto.Nombre</td>
+                <td>
+                    @Html.DisplayFor(modelItem => detalle.Producto.PesoNeto)
+                    @FuncionesProductosViews.DevolverPesoSegunCategoria(detalle.Producto.Categoria.Descripcion.ToString())
+                </td>
+                <td>@detalle.PrecioUnitario.ToString()</td>
+                <td>@detalle.Cantidad</td>
+                <td>@detalle.Subtotal.ToString()</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var detalle in Model)
-            {
-                <tr>
-                    <td>@detalle.CodigoBarra</td>
-                    <td>@detalle.Producto.Nombre</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => detalle.Producto.PesoNeto)
-                        @FuncionesProductosViews.DevolverPesoSegunCategoria(detalle.Producto.Categoria.Descripcion.ToString())
-                    </td>
-                    <td>@detalle.PrecioUnitario.ToString()</td>
-                    <td>@detalle.Cantidad</td>
-                    <td>@detalle.Subtotal.ToString()</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+        }
+    </tbody>
+</table>

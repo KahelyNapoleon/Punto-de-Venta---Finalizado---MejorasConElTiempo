@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Registro de Ventas</h1>
+<h1 class="text-success">Registro de Ventas</h1>
 
 
 <table class="table table-striped border border-succes flex-row">
@@ -25,13 +25,12 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FechaVenta)
             </td>
-            <td style="">
+            <td class="text-success">
                     <b>@Html.DisplayFor(modelItem => item.Total)</b>
             </td>
-            <td>
-               
-                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.VentaId">Detalles</a> |
-                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.VentaId">Eliminar</a>
+            <td class="text-lg-end">    
+                <a class="btn btn-info mb-2" asp-action="Details" asp-route-id="@item.VentaId">Detalles</a>
+                <a class="btn btn-danger mb-2" asp-action="Delete" asp-route-id="@item.VentaId">Eliminar</a>
             </td>
         </tr>
 }

@@ -4,15 +4,13 @@
     ViewData["Title"] = "Categorias";
 }
 
-<h1 class="text-lg-center">Categorias</h1>
+<h1 class="text-lg-center text-info">Categorias</h1>
 
-@* <p>
-    <button type="button" class="btn btn-primary" asp-action="Create">Crear Categoria</button>
-</p> *@
+
 <p>
     <a class="btn btn-primary" asp-action="Create">Crear Categoria</a>
 </p>
-<table class="table table-striped border border-succes">
+<table class="table table-striped border border-secondary">
     <thead>
         <tr>
             <th>
@@ -24,7 +22,7 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+                <td class="text-info">
                 @Html.DisplayFor(modelItem => item.Descripcion)
             </td>
             <td class="text-lg-end">

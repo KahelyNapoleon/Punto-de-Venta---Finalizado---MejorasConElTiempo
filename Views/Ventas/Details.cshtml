@@ -5,25 +5,25 @@
 }
 
 
-<h1>Detalles de la Venta N°@Html.DisplayFor(model => model.VentaId)</h1>
+<h1>Venta Registrada <strong>N°@Html.DisplayFor(model => model.VentaId)</strong></h1>
 <div>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaVenta)
+            @Html.DisplayNameFor(model => model.FechaVenta) :
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FechaVenta)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Total)
+            @Html.DisplayNameFor(model => model.Total) : 
         </dt>
         <dd class = "col-sm-10">
             <b>@Html.DisplayFor(model => model.Total)</b>
         </dd>
     </dl>
 </div>
-
+<hr />
 
 @Html.Partial("_listaDetalleVenta", Model.DetalleVenta)
 

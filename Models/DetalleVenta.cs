@@ -17,7 +17,7 @@ public partial class DetalleVenta
     public decimal PrecioUnitario { get; set; }
     [DisplayNameAttribute("SubTotal")]
     public decimal? Subtotal { get; set; }
-    [DisplayName("Codigo Barra")]
+    [DisplayName("Codigo de Barra")]
     public string? CodigoBarra { get; set; }
 
     public virtual Producto Producto { get; set; } = null!;

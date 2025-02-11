@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace POS.Models;
 
 public partial class Venta
 {
     public int VentaId { get; set; }
-    [DisplayName("Fecha de Venta")]
+    [Display(Name ="Fecha de Venta")]
+    [DataType(DataType.Date)]
     public DateTime FechaVenta { get; set; }
 
     public decimal Total { get; set; }

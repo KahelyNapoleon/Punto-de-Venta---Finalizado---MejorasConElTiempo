@@ -1,0 +1,103 @@
+﻿
+
+
+
+<div>
+    <h1 class="blackquote text-center">Acerca de</h1>
+    <dl class="row">
+        <dt class="col-sm-3">Esta Pagina</dt>
+        <dd class="col-sm-9">
+            <p class="mb-2">Esta pagina se realizo con fines de aprendizaje. Por favor abstenerse.</p>
+            <p>El codigo del mismo se encuentra en mi perfil de gitHub. <a class="fa-brands fa-github" href="https://github.com/KahelyNapoleon/Punto-de-Venta---Finalizado---MejorasConElTiempo"><i>KahelyNapoleon/Punto-de-Venta</i></a></p>
+        </dd>
+
+        <dt class="col-sm-3">Este proyecto</dt>
+        <dd class="col-sm-9 mb-2">
+            Este proyecto se desarrolla a partir de 6 tablas que interactuan y se relacionan entre si.
+            <p class="mb-0">
+                -Categoria
+                <ul class="list mb-0">
+                    <li>Descripcion</li>
+                </ul>
+            </p>
+
+            <p class="mb-0">
+                -Producto y sus caracteristicas basicas
+                <ul class="list mb-0">
+                    <li>Nombre</li>
+                    <li>Codigo de Barra</li>
+                    <li>Peso Neto</li>
+                    <li>Categoria</li>
+                </ul>
+            </p>
+
+            <p class="mb-0">
+                -Stock
+                <ul class="list mb-0">
+                    <li>Cantidad</li>
+                </ul>
+            </p>
+
+            <p class="mb-0">
+                -Control de Precio
+                <ul class="list mb-0">
+                    <li>Costo</li>
+                    <li>Porcentaje de Ganancia</li>
+                </ul>
+            </p>
+
+            <p class="mb-0">
+                -Venta
+                <ul class="list mb-0">
+                    <li>Fecha de Venta</li>
+                    <li>Total de la Venta</li>
+                    
+                </ul>
+            </p>
+
+            <p class="mb-0">
+                -Detalle de Venta
+                <ul class="list mb-0">
+                    <li>Producto</li>
+                    <li>Cantidad</li>
+                    <li>Precio Unitario</li>
+                    <li>SubTotal</li>
+                    <li>Codigo de Barra</li>
+                    <li>Venta</li>
+                </ul>
+            </p>
+
+            <p class="mb-2">
+                <h5>Flujo de Datos:</h5>
+                <ol>
+                    <li>
+                        Se registran los datos de un producto, a través de una instancia de tipo ProductoViewModel que
+                        se encarga de reunir cada una de las caracteristicas de Producto, Stock y Control de Precio
+                    </li>
+                    <li>
+                        Ya sea para Eliminar, ver Detalles o Editar un Producto (codigo de barra, nombre, peso neto, categoria)
+                        se debe acceder en la
+                        seccion de Producto.<br> Cabe la aclaracion si, se elimina un producto lo haran tambien sus datos
+                        de Control de Precio y Stock, de manera transitoria en ambas tablas. 
+                    </li>
+                    <li>Ahora, si queremos realizar modificaciones puntuales, tanto sean para la cantidad o para modificar 
+                        el costo o cambiar el porcentaje de ganancia, se realizan en la seccion de Stock o Control de Precios.
+                    </li>
+                    <li>Finalmente las ventas, se divide en dos partes, por un lado las ventas y, por
+                        otro los registros de las ventas.
+                    </li>
+                </ol>
+            </p>
+        </dd>
+        <dt class="col-sm-3">Autor</dt>
+        <dd class="col-sm-9">Mi nombre es Gabriel y eh conocido lo asombroso que puede llegar a ser .NET y sus diferentes marcos de trabajo. En este caso Asp.NET Core MVC
+            <br>Por el momento y para demostrar mis conocimientos eh tenido que adaptarme a realizar proyectos FullStack,
+            si bien mis habilidades para el lado del cliente no son de las mas deslumbrantes, me asombra poder percibir como los datos
+            viajan de un lado a otro atravesando diferentes lineas de codigo.<br>
+            Mi perfil de <mark>Linkedin</mark>, pueden verlo haciendo click <a class="text-decoration-none" href="https://www.linkedin.com/in/gabrielaguirre--472727149/">aqui</a>.
+
+        </dd>
+
+
+    </dl>
+</div>

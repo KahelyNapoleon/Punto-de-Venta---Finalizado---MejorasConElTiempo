@@ -6,14 +6,16 @@ namespace POS.Models
     {
         //Producto
         public int ProductoId { get; set; }
-        [Required(ErrorMessage = "El código de barra es obligatorio.")]
+        [Required(ErrorMessage = "El código de barra es Requerido.")]
         [StringLength(13, ErrorMessage = "El código de barra debe tener exactamente 13 caracteres.", MinimumLength = 13)]
         [RegularExpression("^[0-9]+$", ErrorMessage = "El código de barra debe contener solo números.")]
         [Display(Name ="Codigo de Barra")]
         public string CodigoBarra { get; set; } = null!;
-        [Required(ErrorMessage ="El Nombre es Obligatorio")]
+        [Required(ErrorMessage ="El Nombre es Requerido")]
         public string Nombre { get; set; } = null!;
+
         [Display(Name = "Peso Neto")]
+        [Required(ErrorMessage ="Peso Neto es Requerido")]
         public int? PesoNeto { get; set; }
         [Required(ErrorMessage ="Campo Requerido")]
         [Display(Name ="Categoria")]
@@ -23,12 +25,12 @@ namespace POS.Models
         //ControlPrecio
         public int ControlPrecioId { get; set; }
 
-        [Required(ErrorMessage ="Campo Requerido")]
+        [Required]
        // [DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         [Range(0.01, double.MaxValue, ErrorMessage ="Ingrese un Valor")]
         public decimal Costo { get; set; }
 
-        [Required(ErrorMessage ="Campo Requerido")]
+        [Required]
         [Display(Name = "Porcentaje de Ganancia")]
         //[DisplayFormat(DataFormatString = "{0:F2}", ApplyFormatInEditMode = true)]
         [Range(0.01, double.MaxValue, ErrorMessage ="Ingrese un Valor")]
@@ -40,7 +42,7 @@ namespace POS.Models
         //Stock
         public int StockId { get; set; }
         [Required(ErrorMessage = "Ingrese una Cantidad")]
-        [Range(0, int.MaxValue, ErrorMessage = "Ingrese un Valor Entero")]
+        [Range(1, int.MaxValue, ErrorMessage = "Ingrese un Valor Entero")]
         public int Cantidad { get; set; }
 
 

@@ -36,15 +36,13 @@
             <br/>
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
+                <a style="text-decoration:none" class="btn btn-outline-primary" asp-action="Index">Volver Atras</a>
             </div>
         </form>
     </div>
 </div>
 
-<br/>
-<div>
-    <a style="text-decoration:none" class="btn btn-outline-primary" asp-action="Index">Volver Atras</a>
-</div>
+
 
  @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

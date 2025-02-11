@@ -68,6 +68,8 @@ namespace POS.Controllers
 
                         await transaction.CommitAsync();
 
+                        TempData["ExitoMessage"] = "Categoria Ingresada Correctamente";
+
                         return RedirectToAction(nameof(Index));
                     }
                     catch(Exception ex)

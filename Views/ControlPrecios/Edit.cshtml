@@ -9,7 +9,7 @@
     @FuncionesProductosViews.DevolverPesoSegunCategoria(Model.Producto.Categoria.Descripcion)
 </h1>
 
-<h4>Editar Precio</h4>
+<h4>Actualizar Precio</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -17,45 +17,49 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ControlPrecioId" />
             <div class="form-group">
-              @*   <label asp-for="ProductoId" class="control-label"></label> *@
+       
                 <input type="hidden" asp-for="ProductoId" class="form-control" />
                 <span asp-validation-for="ProductoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Costo" class="control-label"></label>
-                <input asp-for="Costo" asp-format="{0:F2}" class="form-control" step="0.01"  />
+                <input type="number" asp-for="Costo" asp-format="{0:F2}" class="form-control" step="0.01"  />
                 <span asp-validation-for="Costo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="PorcentajeGanancia" class="control-label"></label>
-                <input asp-for="PorcentajeGanancia" asp-format="{0:F2}" class="form-control" step="0.01" />
+                <input type="number" asp-for="PorcentajeGanancia" asp-format="{0:F2}" class="form-control" step="0.01" />
                 <span asp-validation-for="PorcentajeGanancia" class="text-danger"></span>
             </div>
              <div class="form-group">
-               @*  <label asp-for="PrecioVenta" class="control-label"></label> *@
+             
                 <input type="hidden" asp-for="PrecioVenta" class="form-control" />
                 <span asp-validation-for="PrecioVenta" class="text-danger"></span>
             </div> 
             
             <div class="form-group">
-                @*  <label asp-for="CodigoBarra" class="control-label"></label>  *@
+          
                 <input type="hidden" asp-for="CodigoBarra" class="form-control" />
                 <span asp-validation-for="CodigoBarra" class="text-danger"></span>
             </div>
 
             <br/>
             <div class="form-group">
-                <input type="submit" value="Guardar" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary mb-2" />
+                <a class="btn btn-outline-primary mb-2" asp-action="Index">Volver Atras</a>
             </div>
         </form>
     </div>
 </div>
 
-<br/>
+<script>
+       document.querySelectorAll("input[type='number']").forEach(function(input) {
+        input.addEventListener("focus", function(){
+            this.select();
+        })
+    });
+</script>
 
-<div>
-    <a class="btn btn-outline-primary" asp-action="Index">Volver Atras</a>
-</div>
 
 @* @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

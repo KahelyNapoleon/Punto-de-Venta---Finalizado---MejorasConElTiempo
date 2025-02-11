@@ -1,9 +1,14 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Crud";
 }
 
 <div class="text-center">
-    <h1 class="display-4">POS-Punto de Venta</h1>
+    <h1 class="display-4">POS</h1>
     <img src="~/Imagenes/pos-1024x367.png" class="img-fluid" alt="POS">
-
 </div>
+
+
+@{
+    Html.RenderPartial("_disclaimer");
+    Html.RenderPartial("_acercaDe");
+}
